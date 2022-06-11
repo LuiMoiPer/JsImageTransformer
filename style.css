@@ -13,3 +13,7 @@ img{
     max-height: 50vmin;
     border: 1px solid black;
 }
+
+canvas{
+    border: 1px solid black;
+}

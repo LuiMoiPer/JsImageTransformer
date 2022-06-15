@@ -1,3 +1,5 @@
+import ImageTransformer from "./src/ImageTransformer.js";
+
 const imageInput = document.querySelector("#image_input");
 
 imageInput.addEventListener("change", function(){
@@ -15,7 +17,7 @@ function displayImage(result) {
     userImage.src = result;
 
     // Make an image to store the data of the file selected
-    image = new Image();
+    let image = new Image();
     image.src = result;
 
     // Make the canvas match the size of the image and draw it to the canvas
@@ -31,14 +33,8 @@ function makeNewImage() {
     const canvas = document.querySelector("#output_canvas")
     const context = canvas.getContext("2d");
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-    
-    // Set some of the pixels to be a new color
-    for (let i = 0; i < data.length; i += 4 * 3) {
-        data[i] = 128; //128
-        data[i + 1] = 255; //255
-        data[i + 2] = 219; //219
-        data[i + 3] = 255;
-    }
-    context.putImageData(imageData, 0, 0);
+    const transfromer = new ImageTransformer(imageData);
+    transfromer.transfrom();
+    console.log(transfromer.imageData);
+    context.putImageData(transfromer.getImageData(), 0, 0);
 }

@@ -22,9 +22,9 @@ function displayImage(result) {
 
     // Make the canvas match the size of the image and draw it to the canvas
     const canvas = document.querySelector("#output_canvas");
-    canvas.width = image.width;
-    canvas.height = image.height;
     const context = canvas.getContext("2d");
+    context.canvas.width = image.width;
+    context.canvas.height = image.height;
     context.drawImage(image, 0, 0);
 }
 
@@ -35,6 +35,6 @@ function makeNewImage() {
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const transfromer = new ImageTransformer(imageData);
     transfromer.transfrom();
-    console.log(transfromer.imageData);
-    context.putImageData(transfromer.getImageData(), 0, 0);
+    let transformedData = transfromer.getImageData();
+    context.putImageData(transformedData, 0, 0);
 }

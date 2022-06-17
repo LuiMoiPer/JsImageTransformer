@@ -8,12 +8,12 @@ export default class IncreasingRgb {
         this.currentValue = 0;
     }
 
-    isEmpty() {
+    get isEmpty() {
         return this.currentValue >= MAX_UINT_32;
     }
 
     nextColor() {
-        if (!this.isEmpty()) {
+        if (!this.isEmpty) {
             let color = this._getColor();
             this.currentValue += 1;
             return color;

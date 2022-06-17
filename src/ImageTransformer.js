@@ -1,6 +1,10 @@
+import PixelPlacer from "./PixelPlacer.js";
+import IncreasingRgb from "./IncreasingRgb.js"
+
 class ImageTransformer {
     constructor(imageData) {
         this.imageData = structuredClone(imageData);
+        this.pixelPlacer = new PixelPlacer(imageData.height, imageData.width, new IncreasingRgb());
     }
 
     getImageData() {
@@ -9,11 +13,17 @@ class ImageTransformer {
 
     transfrom() {
         let data = this.imageData.data;
-        for (let i = 0; i < data.length; i += 4 * 3) {
-            data[i] = 128;
-            data[i + 1] = 255;
-            data[i + 2] = 219;
-            data[i + 3] = 255;
+        while (this.pixelPlacer.isDone == false) {
+            // Take a pixel
+            let nextPixel = this.pixelPlacer.nextPixel();
+            console.log(nextPixel.point);
+
+            // Place it
+            let index = nextPixel.point.x * 4 + nextPixel.point.y * (this.imageData.width * 4);
+            data[index] = nextPixel.color.r;
+            data[index + 1] = nextPixel.color.g;
+            data[index + 2] = nextPixel.color.b;
+            data[index + 3] = nextPixel.color.a;
         }
     }
 }

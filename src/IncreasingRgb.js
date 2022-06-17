@@ -8,10 +8,6 @@ export default class IncreasingRgb {
         this.currentValue = 0;
     }
 
-    constructor(value) {
-        this.currentValue = Number.parseInt(value);
-    }
-
     isEmpty() {
         return this.currentValue >= MAX_UINT_32;
     }

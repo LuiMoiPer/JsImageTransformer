@@ -45,6 +45,7 @@ export default class PixelPlacer {
                 }
             });
         }
+
         return nextPixel;
     }
 }

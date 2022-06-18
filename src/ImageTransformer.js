@@ -16,7 +16,9 @@ class ImageTransformer {
         while (this.pixelPlacer.isDone == false) {
             // Take a pixel
             let nextPixel = this.pixelPlacer.nextPixel();
-            console.log(nextPixel.point);
+            if (nextPixel == null) {
+                continue;
+            }
 
             // Place it
             let index = nextPixel.point.x * 4 + nextPixel.point.y * (this.imageData.width * 4);

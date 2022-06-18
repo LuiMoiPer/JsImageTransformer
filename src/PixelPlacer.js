@@ -22,11 +22,11 @@ export default class PixelPlacer {
         let nextPixel = null;
         while (this.frontier.length > 0 && nextPixel == null) {
             let point = this.frontier.shift();
-            if (this.visited.has(point)) {
+            if (this.visited.has(point.toString())) {
                 continue;
             }
 
-            this.visited.add(point);
+            this.visited.add(point.toString());
             nextPixel = new Pixel(point, this.colorProvider.nextColor());
 
             let neighbors = [

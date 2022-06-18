@@ -11,4 +11,12 @@ export default class Point {
     get y() {
         return this._y;
     }
+
+    toString() {
+        return this.x + "," + this.y;
+    }
+}
+
+export function clonePoint(point) {
+    return new Point(point.x, point.y);
 }

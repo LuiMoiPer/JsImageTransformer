@@ -22,3 +22,7 @@ export default class Color {
         return this._a;
     }
 }
+
+export function cloneColor(color) {
+    return new Color(color.r, color.g, color.b, color.a);
+}

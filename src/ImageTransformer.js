@@ -11,7 +11,7 @@ class ImageTransformer {
         return structuredClone(this.imageData);
     }
 
-    transfrom() {
+    transform() {
         let data = this.imageData.data;
         while (this.pixelPlacer.isDone == false) {
             // Take a pixel

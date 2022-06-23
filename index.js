@@ -1,5 +1,5 @@
 const imageInput = document.querySelector("#image_input");
-const worker = new Worker("worker.js");
+const worker = new Worker("worker.js", {type: "module"});
 
 imageInput.addEventListener("change", function(){
     const fileReader = new FileReader();
@@ -28,10 +28,11 @@ function makeNewImage(result) {
         context.drawImage(image, 0, 0);
 
         let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        worker.postMessage(imageData);
+        
         worker.onmessage = function(message) {
             context.putImageData(message.data, 0, 0);
         }
+        worker.postMessage(imageData);
     }
     image.src = result;
 }

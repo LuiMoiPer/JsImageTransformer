@@ -15,7 +15,7 @@ export default class IncreasingRgb {
     nextColor() {
         if (!this.isEmpty) {
             let color = this._getColor();
-            this.currentValue += 255;
+            this.currentValue += 256;
             return color;
         }
     }

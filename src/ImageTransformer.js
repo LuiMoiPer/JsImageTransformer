@@ -2,14 +2,14 @@ import PixelPlacer from "./PixelPlacer.js";
 import IncreasingRgb from "./IncreasingRgb.js"
 import NeighborProvider from "./NeighborProvider.js";
 import Point from "./Point.js";
-import { octagonal } from "./NeighborProvider.js";
+import { octagonal, cardinal, ordinal, knight} from "./NeighborProvider.js";
 
 class ImageTransformer {
     constructor(imageData) {
         this.imageData = structuredClone(imageData);
         let neighborProvider = new NeighborProvider();
         neighborProvider.doesShuffle = false;
-        neighborProvider.addPoints(octagonal());
+        neighborProvider.addPoints(knight());
         this.pixelPlacer = new PixelPlacer(imageData.height, 
             imageData.width, 
             new IncreasingRgb(),
